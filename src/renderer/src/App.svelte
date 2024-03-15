@@ -1,11 +1,8 @@
 <script lang="ts">
-  import Versions from './components/Versions.svelte'
-  import './app.css'
+  import Navigation from './components/Navigation/Navigation.svelte'
 </script>
 
-<div class="app flex flex-col">
-  <h1>Hello, Electron!</h1>
-  <p>Welcome to your Electron application.</p>
-</div>
+<Navigation />
+<div class="container mx-auto"></div>
 
-<Versions />
+<!-- add navigation routes -->
