@@ -5,7 +5,6 @@
   import Settings from './sites/Settings.svelte'
   import Gaps from './sites/Gaps.svelte'
   let currentPath = window.location.pathname
-  let configPath = '/home/timo/.config/sway/config'
 </script>
 
 <Navigation />

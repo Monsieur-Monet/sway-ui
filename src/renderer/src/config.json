@@ -1,10 +1,80 @@
 {
+  "keyboardLayout": {
+    "command": "input * {xkb_layout '$'}",
+    "value": "eu"
+  },
+  "autostart": {
+    "autotiling": {
+      "command": "exec always $",
+      "value": "autotiling"
+    },
+    "nm-applet": {
+      "command": "exec always $",
+      "value": "nm-applet"
+    },
+    "blueman-applet": {
+      "command": "exec always $",
+      "value": "blueman-applet"
+    },
+    "solaar": {
+      "command": "exec always $",
+      "value": "solaar -w hide"
+    }
+  },
+  "variables": {
+    "keys": {
+      "modKey": {
+        "command": "set $mod $",
+        "value": "Mod4"
+      },
+      "leftKey": {
+        "command": "set $left $",
+        "value": "h"
+      },
+      "downKey": {
+        "command": "set $down $",
+        "value": "j"
+      },
+      "upKey": {
+        "command": "set $up $",
+        "value": "k"
+      },
+      "rightKey": {
+        "command": "set $right $",
+        "value": "l"
+      }
+    },
+    "programs": {
+      "terminal": {
+        "command": "set $term $",
+        "value": "kitty"
+      },
+      "appLauncher": {
+        "command": "set $appLauncher $",
+        "value": "rofi"
+      },
+      "appLauncherList": {
+        "command": "set $menu $appLauncher $",
+        "value": "-show drun -show-icons"
+      }
+    }
+  },
+  "background": {
+    "command": "output '*' bg $ fill",
+    "value": "path/to/default/wallpaper"
+  },
   "gaps": {
     "inner": {
-      "command": "gaps inner"
+      "command": "gaps inner",
+      "value": 10
     },
     "outer": {
-      "command": "gaps outer"
+      "command": "gaps outer",
+      "value": 10
     }
+  },
+  "appLauncherList": {
+    "command": "",
+    "value": ""
   }
 }
