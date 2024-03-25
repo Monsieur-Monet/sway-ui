@@ -1,0 +1,10 @@
+{
+  "gaps": {
+    "inner": {
+      "command": "gaps inner"
+    },
+    "outer": {
+      "command": "gaps outer"
+    }
+  }
+}
