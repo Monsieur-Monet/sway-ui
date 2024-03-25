@@ -8,6 +8,7 @@
       <NavigationButton href="/" text="Home" />
       <NavigationButton href="/shortcuts" text="Keyboard Shortcuts" />
       <NavigationButton href="/settings" text="Settings" />
+      <NavigationButton href="/gaps" text="Gaps" />
     </div>
   </div>
 </div>
