@@ -63,6 +63,77 @@
     "command": "output '*' bg $ fill",
     "value": "path/to/default/wallpaper"
   },
+  "display": {
+    "monitor": {
+      "command": "output $",
+      "value": "DP-2"
+    },
+    "resolution": {
+      "command": "output resolution $",
+      "value": "3840x2160"
+    },
+    "position": {
+      "command": "output position $",
+      "value": "0,0"
+    },
+    "scale": {
+      "command": "output scale $",
+      "value": "1.25"
+    },
+    "adaptiveSync": {
+      "command": "output adaptive_sync $",
+      "value": "off"
+    }
+  },
+  "idle": {
+    "lock": {
+      "command": "exec swayidle -w timeout $ 'swaylock -f -c 000000'",
+      "value": "300"
+    },
+    "turnOffScreen": {
+      "command": "exec swayidle -w timeout $ 'swaymsg \"output * power off\"' resume 'swaymsg \"output * power on\"'",
+      "value": "600"
+    },
+    "beforeSleep": {
+      "command": "exec swayidle -w before-sleep 'swaylock -f -c 000000'"
+    }
+  },
+  "theme": {
+    "schema": {
+      "command": "set $schema '$'",
+      "value": "org.gnome.desktop.interface"
+    },
+    "gtkTheme": {
+      "command": "exec_always gsettings set $schema gtk-theme $",
+      "value": "Adwaita'"
+    },
+    "iconTheme": {
+      "command": "exec_always gsettings set $schema icon-theme $",
+      "value": "Adwaita'"
+    },
+    "cursorTheme": {
+      "command": "exec_always gsettings set $schema cursor-theme $",
+      "value": "Yaru'"
+    },
+    "darkTheme": {
+      "command": "exec_always gsettings set $schema gtk-application-prefer-dark-theme $",
+      "value": "true"
+    }
+  },
+  "windowBorders": {
+    "default": {
+      "command": "default_border $",
+      "value": "3"
+    },
+    "floating": {
+      "command": "floating_border $",
+      "value": "normal"
+    },
+    "focused": {
+      "command": "client.focused '$' '$' '$' '$'",
+      "value": "#82553c"
+    }
+  },
   "gaps": {
     "inner": {
       "command": "gaps inner",
@@ -73,8 +144,206 @@
       "value": 10
     }
   },
-  "appLauncherList": {
-    "command": "",
-    "value": ""
+  "bar": {
+    "command": "bar {\n  swaybar_command $\n  workspace_buttons yes\n}",
+    "value": "waybar"
+  },
+  "keybindings": {
+    "basics": {
+      "terminal": {
+        "command": "bindsym $mod+$ exec $term",
+        "value": "t"
+      },
+      "killWindow": {
+        "command": "bindsym $mod+$ kill",
+        "value": "q"
+      },
+      "startLauncher": {
+        "command": "bindsym $mod+$ exec $menu",
+        "value": "d"
+      },
+      "screenshot": {
+        "command": "bindsym $mod+$ exec slurp | grim -g - - | wl-copy",
+        "value": "Insert"
+      },
+      "reloadConfig": {
+        "command": "bindsym $mod+Shift+$ reload",
+        "value": "c"
+      },
+      "exit": {
+        "command": "bindsym $mod+Shift+$ exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'",
+        "value": "e"
+      },
+      "shutdown": {
+        "command": "bindsym $mod+Shift+$ exec swaynag -t warning -m 'You are about to shut down the system. Are you sure you want to do that?' -B 'Yes, shut down the system' 'shutdown now'",
+        "value": "Escape"
+      }
+    }
+  },
+  "focusVim": {
+    "left": {
+      "command": "bindsym $mod+$left focus left"
+    },
+    "down": {
+      "command": "bindsym $mod+$down focus down"
+    },
+    "up": {
+      "command": "bindsym $mod+$up focus up"
+    },
+    "right": {
+      "command": "bindsym $mod+$right focus right"
+    }
+  },
+  "focusArrowkeys": {
+    "left": {
+      "command": "bindsym $mod+Left focus left"
+    },
+    "down": {
+      "command": "bindsym $mod+Down focus down"
+    },
+    "up": {
+      "command": "bindsym $mod+Up focus up"
+    },
+    "right": {
+      "command": "bindsym $mod+Right focus right"
+    }
+  },
+  "moveFocusVim": {
+    "left": {
+      "command": "bindsym $mod+Shift+$left move left"
+    },
+    "down": {
+      "command": "bindsym $mod+Shift+$down move down"
+    },
+    "up": {
+      "command": "bindsym $mod+Shift+$up move up"
+    },
+    "right": {
+      "command": "bindsym $mod+Shift+$right move right"
+    }
+  },
+  "moveFocusArrowkeys": {
+    "left": {
+      "command": "bindsym $mod+Shift+Left move left"
+    },
+    "down": {
+      "command": "bindsym $mod+Shift+Down move down"
+    },
+    "up": {
+      "command": "bindsym $mod+Shift+Up move up"
+    },
+    "right": {
+      "command": "bindsym $mod+Shift+Right move right"
+    }
+  },
+  "switchWorkspace": {
+    "1": {
+      "command": "bindsym $mod+1 workspace number 1"
+    },
+    "2": {
+      "command": "bindsym $mod+2 workspace number 2"
+    },
+    "3": {
+      "command": "bindsym $mod+3 workspace number 3"
+    },
+    "4": {
+      "command": "bindsym $mod+4 workspace number 4"
+    },
+    "5": {
+      "command": "bindsym $mod+5 workspace number 5"
+    },
+    "6": {
+      "command": "bindsym $mod+6 workspace number 6"
+    },
+    "7": {
+      "command": "bindsym $mod+7 workspace number 7"
+    },
+    "8": {
+      "command": "bindsym $mod+8 workspace number 8"
+    },
+    "9": {
+      "command": "bindsym $mod+9 workspace number 9"
+    },
+    "0": {
+      "command": "bindsym $mod+0 workspace number 10"
+    }
+  },
+  "moveToWorkspace": {
+    "1": {
+      "command": "bindsym $mod+Shift+1 move container to workspace number 1"
+    },
+    "2": {
+      "command": "bindsym $mod+Shift+2 move container to workspace number 2"
+    },
+    "3": {
+      "command": "bindsym $mod+Shift+3 move container to workspace number 3"
+    },
+    "4": {
+      "command": "bindsym $mod+Shift+4 move container to workspace number 4"
+    },
+    "5": {
+      "command": "bindsym $mod+Shift+5 move container to workspace number 5"
+    },
+    "6": {
+      "command": "bindsym $mod+Shift+6 move container to workspace number 6"
+    },
+    "7": {
+      "command": "bindsym $mod+Shift+7 move container to workspace number 7"
+    },
+    "8": {
+      "command": "bindsym $mod+Shift+8 move container to workspace number 8"
+    },
+    "9": {
+      "command": "bindsym $mod+Shift+9 move container to workspace number 9"
+    },
+    "0": {
+      "command": "bindsym $mod+Shift+0 move container to workspace number 10"
+    }
+  },
+  "layout": {
+    "splitV": {
+      "command": "bindsym $mod+v splith"
+    },
+    "splitH": {
+      "command": "bindsym $mod+h splitv"
+    },
+    "stacked": {
+      "command": "bindsym $mod+s layout stacking"
+    },
+    "tabbed": {
+      "command": "bindsym $mod+t layout tabbed"
+    },
+    "toggleSplit": {
+      "command": "bindsym $mod+e layout toggle split"
+    },
+    "toggleFullscreen": {
+      "command": "bindsym $mod+f fullscreen"
+    },
+    "toggleFloating": {
+      "command": "bindsym $mod+Shift+space floating toggle"
+    },
+    "toggleFloatingFocus": {
+      "command": "bindsym $mod+space focus mode_toggle"
+    },
+    "focusParent": {
+      "command": "bindsym $mod+a focus parent"
+    }
+  },
+  "scratchpad": {
+    "move": {
+      "command": "bindsym $mod+Shift+minus move scratchpad"
+    },
+    "toggle": {
+      "command": "bindsym $mod+minus scratchpad toggle"
+    }
+  },
+  "resizeMode": {
+    "command": "bindsym $mod+r mode \"resize\""
+  },
+  "resize": {
+    "command": "mode \"resize\" {\n    bindsym $left resize shrink width 10px\n    bindsym $down resize grow height 10px\n    bindsym $up resize shrink height 10px\n    bindsym $right resize grow width 10px\n\n    bindsym Left resize shrink width 10px\n    bindsym Down resize grow height 10px\n    bindsym Up resize shrink height 10px\n    bindsym Right resize grow width 10px\n\n    bindsym Return mode \"default\"\n    bindsym Escape mode \"default\"\n}"
+  },
+  "include": {
+    "command": "include '$(/usr/libexec/sway/layered-include \"/usr/share/sway/config.d/*.conf\" \"/etc/sway/config.d/*.conf\" \"${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf\")'"
   }
 }
